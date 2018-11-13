@@ -1,0 +1,190 @@
+<odoo>
+  <data>
+
+    <!-- 
+    ##################################################
+        cdo.contrato 
+    ##################################################
+    -->
+
+    <record model="ir.ui.view" id="view_cdo_contrato_tree">
+        <field name="model">cdo.contrato</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" invisible="0"/>
+                <field name="fecha_contrato" invisible="0"/>
+                <field name="order_id" invisible="0"/>
+                <field name="cliente_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_altas">
+        <field name="name">Altas</field>
+        <field name="context">{'search_default_contrato_id': active_id}</field>
+        <field name="res_model">cdo.alta</field>
+    </record>
+
+    <record model="ir.ui.view" id="view_cdo_contrato_form">
+        <field name="model">cdo.contrato</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_altas)d" icon="fa-arrows" class="oe_stat_button" 
+                        string="Altas" type="action"/>
+                    </div>
+                    <group> 
+                        <group>
+                            <field name="id"/>
+                            <field name="fecha_contrato"/>
+                        </group>
+                        <group>
+                            <field name="order_id" invisible="0"/>
+                            <field name="cliente_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Altas">
+                            <field name="alta_ids">                    
+                                <tree string="Altas" create="1" update="0">
+                                    <field name="fecha_alta"/>
+                                    <field name="requisitos_completos"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- 
+    ##################################################
+        cdo.tipo.recurso 
+    ##################################################
+    -->
+    
+    <record model="ir.ui.view" id="view_cdo_tipo_recurso_tree">
+        <field name="model">cdo.tipo.recurso</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" invisible="0"/>
+                <field name="descripcion" invisible="0"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_cdo_tipo_recurso_form">
+        <field name="model">cdo.tipo.recurso</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <group> 
+                        <group>
+                            <field name="id"/>
+                        </group>
+                        <group>
+                            <field name="descripcion"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- 
+    ##################################################
+        cdo.hr.tipo.tarea 
+    ##################################################
+    -->
+    
+    <record model="ir.ui.view" id="view_cdo_hr_tipo_tarea_tree">
+        <field name="model">cdo.hr.tipo.tarea</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" invisible="0"/>
+                <field name="descripcion" invisible="0"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_cdo_hr_tipo_tarea_form">
+        <field name="model">cdo.hr.tipo.tarea</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <group> 
+                        <group>
+                            <field name="id"/>
+                        </group>
+                        <group>
+                            <field name="descripcion"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- 
+    ##################################################
+        cdo.requisito 
+    ##################################################
+    -->
+    
+    <record model="ir.ui.view" id="view_cdo_requisito_tree">
+        <field name="model">cdo.requisito</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" invisible="0"/>
+                <field name="descripcion" invisible="0"/>
+                <field name="requisito_alta"/>
+                <field name="requisito_mensual"/>
+                <field name="tiene_vencimiento"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_cdo_requisito_form">
+        <field name="model">cdo.requisito</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <group> 
+                        <group>
+                            <field name="id"/>
+                            <field name="descripcion"/>
+                        </group>
+                        <group>
+                            <field name="requisito_alta"/>
+                            <field name="requisito_mensual"/>
+                            <field name="tiene_vencimiento"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+  </data>
+</odoo>

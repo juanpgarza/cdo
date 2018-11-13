@@ -1,0 +1,118 @@
+<odoo>
+  <data>
+
+    <!-- 
+    ##################################################
+        Menu principal 
+    ##################################################
+    -->
+
+    <menuitem id="menu_cdo"
+        name="Control Documental"
+        sequence="1"/>
+
+    <!-- 
+    ##################################################
+        Contratos 
+    ##################################################
+    -->
+
+    <menuitem id="menu_cdo_contratos"
+        name="Contratos"
+        parent="menu_cdo"
+        sequence="2"/>
+
+    <!-- 
+    ##################################################
+        Contratos - Contrato
+    ##################################################
+    -->
+
+    <act_window id="action_view_cdo_contrato"  
+            name="Contratos"
+            res_model="cdo.contrato" 
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_cdo_contrato"
+        parent="menu_cdo_contratos"
+        action="action_view_cdo_contrato"
+        sequence="3"/>
+
+    <!-- 
+    ##################################################
+        Configuracion
+    ##################################################
+    -->
+    <menuitem id="menu_cdo_configuracion"
+        name="Configuración"
+        parent="menu_cdo"
+        sequence="2"/>
+
+    <!-- 
+    ##################################################
+        Configuracion - RRHH
+    ##################################################
+    -->
+
+    <menuitem id="menu_cdo_configuracion_rrhh"
+    name="RRHH"
+    parent="menu_cdo_configuracion"
+    sequence="2"/>
+
+    <!-- 
+    ##################################################
+        Configuracion - RRHH - Tipos de tareas
+    ##################################################
+    -->
+
+    <act_window id="action_view_cdo_tipo_tarea"  
+            name="Tipos de tareas"
+            res_model="cdo.hr.tipo.tarea" 
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_cdo_configuracion_rrhh_tipos_tareas"
+        name="Tipos de tareas"
+        parent="menu_cdo_configuracion"
+        action="action_view_cdo_tipo_tarea"
+        sequence="1"/>
+
+    <!-- 
+    ##################################################
+        Configuracion - RRHH - Tipos de Recursos
+    ##################################################
+    -->
+
+    <act_window id="action_view_cdo_tipo_recurso"  
+            name="Tipos de recursos"
+            res_model="cdo.tipo.recurso" 
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_cdo_configuracion_rrhh_tipos_recursos"
+        name="Tipos de recursos"
+        parent="menu_cdo_configuracion"
+        action="action_view_cdo_tipo_recurso"
+        sequence="2"/>
+
+    <!-- 
+    ##################################################
+        Configuracion - RRHH - Requisitos
+    ##################################################
+    -->
+
+    <act_window id="action_view_cdo_requisitos"  
+            name="Requisitos"
+            res_model="cdo.requisito" 
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_cdo_configuracion_requisitos"
+        name="Requisitos"
+        parent="menu_cdo_configuracion"
+        action="action_view_cdo_requisitos"
+        sequence="3"/>
+
+  </data>
+</odoo>

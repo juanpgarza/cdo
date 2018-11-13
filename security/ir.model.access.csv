@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cdo_contrato,access_cdo_contrato,model_cdo_contrato,base.group_user,1,0,0,0
+access_cdo_requisito,access_cdo_requisito,model_cdo_requisito,base.group_user,1,0,0,0
+access_cdo_requisito_contrato,access_cdo_requisito_contrato,model_cdo_requisito_contrato,base.group_user,1,0,0,0
+access_cdo_tipo_recurso_requisito,access_cdo_tipo_recurso_requisito,model_cdo_tipo_recurso_requisito,base.group_user,1,0,0,0
+access_cdo_hr_tipo_tarea_requisito,access_cdo_hr_tipo_tarea_requisito,model_cdo_hr_tipo_tarea_requisito,base.group_user,1,0,0,0
+access_cdo_tipo_recurso,access_cdo_tipo_recurso,model_cdo_tipo_recurso,base.group_user,1,0,0,0
+access_cdo_hr_tipo_tarea,access_cdo_hr_tipo_tarea,model_cdo_hr_tipo_tarea,base.group_user,1,0,0,0
+access_cdo_alta,access_cdo_alta,model_cdo_alta,base.group_user,1,0,0,0
+access_cdo_hr_alta,access_cdo_hr_alta,model_cdo_hr_alta,base.group_user,1,0,0,0
+access_cdo_mensual,access_cdo_mensual,model_cdo_mensual,base.group_user,1,0,0,0
+access_cdo_hr_mensual,access_cdo_hr_mensual,model_cdo_hr_mensual,base.group_user,1,0,0,0

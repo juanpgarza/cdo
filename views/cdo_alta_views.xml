@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+
+    <!-- 
+    ##################################################
+        cdo.alta
+    ##################################################
+    -->
+    
+    <record model="ir.ui.view" id="view_cdo_alta_tree">
+        <field name="model">cdo.alta</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" invisible="0"/>
+                <field name="contrato_id" invisible="0"/>
+                <field name="fecha_alta" invisible="0"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_cdo_alta_form">
+        <field name="model">cdo.alta</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <group> 
+                        <group>
+                            <field name="id"/>
+                        </group>
+                        <group>
+                            <field name="contrato_id" invisible="0" readonly="True"/>
+                            <field name="fecha_alta"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cdo_alta_search" model="ir.ui.view">
+        <field name="model">cdo.alta</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="contrato_id"/>
+            </search>
+        </field>
+    </record>
+
+  </data>
+</odoo>
