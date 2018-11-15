@@ -20,14 +20,16 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','sale'],
+    'depends': ['base','sale','hr'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/menu_views.xml',
+        'views/cdo_menu_views.xml',
         'views/cdo_views.xml',
         'views/cdo_alta_views.xml',
+        'views/cdo_rh_views.xml',
+        'views/hr_menu_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

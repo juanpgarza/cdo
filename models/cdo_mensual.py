@@ -31,3 +31,5 @@ class CdoHrMensual(models.Model):
     mensual_id = fields.Many2one('cdo.mensual',string='Mensual')
 
     requisito_contrato_ids = fields.One2many('cdo.requisito.contrato', 'hr_mensual_id')
+
+    

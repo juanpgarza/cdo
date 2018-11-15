@@ -19,11 +19,21 @@
         </field>
     </record>
 
+    <record model="ir.actions.act_window" id="action_hr_alta">
+        <field name="name">RRHH</field>
+        <field name="context">{'search_default_alta_id': active_id}</field>
+        <field name="res_model">cdo.hr.alta</field>
+    </record>
+
     <record model="ir.ui.view" id="view_cdo_alta_form">
         <field name="model">cdo.alta</field>
         <field name="arch" type="xml">
             <form>
-              <sheet>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_hr_alta)d" icon="fa-arrows" class="oe_stat_button" 
+                        string="RRHH" type="action"/>
+                    </div>
                     <group> 
                         <group>
                             <field name="id"/>
@@ -33,6 +43,17 @@
                             <field name="fecha_alta"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="RRHH">
+                            <field name="hr_alta_ids">                    
+                                <tree string="Altas" create="1" update="0">
+                                    <field name="partner_id" invisible="0"/>
+                                    <field name="tipo_recurso_id" invisible="0"/>
+                                    <field name="tipo_tarea_id" invisible="0"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" />
@@ -47,6 +68,88 @@
         <field name="arch" type="xml">
             <search>
                 <field name="contrato_id"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- 
+    ##################################################
+        cdo.hr.alta
+    ##################################################
+    -->
+    
+    <record model="ir.ui.view" id="view_cdo_hr_alta_tree">
+        <field name="model">cdo.hr.alta</field>
+        <field eval="10" name="priority"/>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id" invisible="0"/>
+                <field name="referencia_contrato" invisible="0"/>                
+                <field name="alta_id" invisible="0"/>
+                <field name="partner_id" invisible="0"/>
+                <field name="interno_externo" invisible="0"/>                
+                <field name="tipo_recurso_id" invisible="0"/>
+                <field name="tipo_tarea_id" invisible="0"/>
+                <field name="requisitos_cumplidos" invisible="0"/>                
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_hr_alta_requisito">
+        <field name="name">Requisitos</field>
+        <field name="context">{'search_default_hr_alta_id': active_id}</field>
+        <field name="res_model">cdo.requisito.contrato</field>
+    </record>
+
+    <record model="ir.ui.view" id="view_cdo_hr_alta_form">
+        <field name="model">cdo.hr.alta</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_hr_alta_requisito)d" icon="fa-arrows" class="oe_stat_button" 
+                        string="Requisitos" type="action"/>
+                    </div>
+                    <group> 
+                        <group>
+                            <field name="id"/>
+                            <field name="alta_id" invisible="0" readonly="True"/>
+                        </group>
+                        <group>
+                            <field name="tipo_recurso_id" invisible="0"/>
+                            <field name="tipo_tarea_id" invisible="0"/>
+                            <field name="partner_id" invisible="0"/>
+                            <field name="requisitos_cumplidos" invisible="0"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Requisitos">
+                            <field name="requisito_contrato_ids">                    
+                                <tree string="Altas" create="1" update="0">
+                                    <field name="requisito_id" invisible="0"/>
+                                    <field name="requisito_cumplido" invisible="0"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cdo_hr_alta_search" model="ir.ui.view">
+        <field name="model">cdo.hr.alta</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="alta_id"/>
+
+                <filter name="filter_requisitos_pendientes" string="Requisitos pendientes" domain="[('requisitos_cumplidos','=',False)]"/>
+
+                <filter name="group_alta_id" string="Por Alta" context="{'group_by': 'alta_id'}"/>
             </search>
         </field>
     </record>

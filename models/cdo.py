@@ -7,8 +7,9 @@ from odoo import models, fields, api
 class CdoContrato(models.Model):
     _inherit = ['mail.thread']
     _name = 'cdo.contrato'
-    _rec_name = 'order_id'
+    _rec_name = 'referencia'
 
+    referencia = fields.Char('Referencia')
     order_id = fields.Many2one('sale.order', string='Orden Venta')
     cliente_id = fields.Many2one('res.partner', string='Cliente', domain="[('is_company','=',True)]")
 
@@ -20,12 +21,40 @@ class CdoContrato(models.Model):
 class CdoRequisitoContrato(models.Model):
     _inherit = ['mail.thread']
     _name = 'cdo.requisito.contrato'
+    _rec_name = 'requisito_id'
 
-    hr_alta_id = fields.Many2one('cdo.hr.alta',string='Alta')
+    hr_alta_id = fields.Many2one('cdo.hr.alta',string='Recurso')
     hr_mensual_id = fields.Many2one('cdo.hr.mensual', string='Mensual')
     requisito_id = fields.Many2one('cdo.requisito', string='Requisito')
 
+    alta_id = fields.Many2one('cdo.alta',related='hr_alta_id.alta_id', string='Alta', readonly=True)
+    referencia_contrato_alta = fields.Char(related='hr_alta_id.alta_id.contrato_id.referencia', string='Contrato')
+    interno_externo = fields.Selection(related='hr_alta_id.partner_id.tipo_recurso', string='Interno/Externo')
+
     requisito_cumplido = fields.Boolean('Requisito cumplido?')
+
+    # adjunto_id = fields.Many2many('ir.attachment', 'cdo_requisito_contrato_adjunto_rel', 
+    #                                     'requisito_contrato_id', 'attach_id3', string="Adjunto",
+    #                                      help='Adjuntar archivos', copy=False)
+
+    adjunto_id = fields.Many2one('ir.attachment', string="Adjunto")
+
+class Adjunto(models.Model):
+    _inherit = 'ir.attachment'
+
+    requisito_ids = fields.One2many('cdo.requisito.contrato','adjunto_id')
+
+    # doc_attach_rel = fields.Many2many('cdo.requisito.contrato', 'adjunto_id', 'attach_id3', 'requisito_contrato_id',
+    #                                   string="Adjuntar archivos", invisible=1)
+""" 
+    @api.model
+    def create(self, vals):
+
+        nuevo = super(Adjunto, self).create(vals)
+
+        # id = nuevo.doc_attach_rel.requisito_contrato_id.id
+
+        import pdb; pdb.set_trace() """
 
 
 ###### CONFIGURACION
@@ -60,6 +89,7 @@ class CdoTipoRecurso(models.Model):
     _rec_name = 'descripcion'
 
     descripcion = fields.Char('Descripción')
+    observaciones = fields.Char('Observaciones')
 
 class CdoHrTipoTarea(models.Model):
     _inherit = ['mail.thread']

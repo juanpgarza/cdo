@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+
+    <!-- 
+    ##################################################
+        Menu principal 
+    ##################################################
+    -->
+
+    <menuitem id="menu_hr_cdo"
+        name="Control Documental"
+        parent="hr.menu_hr_root"
+        sequence="1"/>
+
+    <act_window id="action_hr_recursos"  
+            name="Recursos Humanos"
+            res_model="res.partner" 
+            view_mode="tree, form"
+            domain="[('is_company','=', False),('tipo_recurso','=', 1)]"
+            target="current"/>
+
+   <menuitem id="menu_view_hr" parent="menu_hr_cdo"
+        sequence="10" action="action_hr_recursos" />
+
+    <record id="view_rh_tree_action" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="cdo.action_hr_recursos" />
+        <field name="view_id" ref="view_cdo_hr_tree" />
+        <field name="view_mode">tree</field>
+        <field name="sequence">21</field>
+    </record>
+
+    <record id="view_hr_form_action" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="cdo.action_hr_recursos" />
+        <field name="view_id" ref="view_cdo_hr_form" />
+        <field name="view_mode">form</field>
+        <field name="sequence">21</field>
+    </record>
+
+
+    <act_window id="action_view_hr_alta"  
+            name="Altas Hr"
+            res_model="cdo.hr.alta" 
+            context="{'search_default_filter_requisitos_pendientes': True}"
+            domain="[('interno_externo','=', 1)]"
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_hr_alta"
+        parent="menu_hr_cdo"
+        action="action_view_hr_alta"
+        sequence="4"/>
+
+
+      </data>
+</odoo>

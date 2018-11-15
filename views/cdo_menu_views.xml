@@ -41,6 +41,58 @@
 
     <!-- 
     ##################################################
+        Contratos - Altas
+    ##################################################
+    -->
+
+    <act_window id="action_view_cdo_alta"  
+            name="Altas"
+            res_model="cdo.alta" 
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_cdo_alta"
+        parent="menu_cdo_contratos"
+        action="action_view_cdo_alta"
+        sequence="4"/>
+
+    <!-- 
+    ##################################################
+        Contratos - Altas - HR
+    ##################################################
+    -->
+
+    <act_window id="action_view_cdo_hr_alta"  
+            name="Altas Hr"
+            res_model="cdo.hr.alta" 
+            context="{'search_default_filter_requisitos_pendientes': True}"
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_cdo_hr_alta"
+        parent="menu_cdo_contratos"
+        action="action_view_cdo_hr_alta"
+        sequence="4"/>
+
+    <!-- 
+    ##################################################
+        Contratos - Altas - HR - requisitos
+    ##################################################
+    -->
+
+    <act_window id="action_view_cdo_requisito_contrato"  
+            name="Altas Hr requisitos"
+            res_model="cdo.requisito.contrato" 
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_cdo_requisito_contrato"
+        parent="menu_cdo_contratos"
+        action="action_view_cdo_requisito_contrato"
+        sequence="5"/>
+
+    <!-- 
+    ##################################################
         Configuracion
     ##################################################
     -->
