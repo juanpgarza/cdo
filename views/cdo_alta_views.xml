@@ -15,6 +15,7 @@
                 <field name="id" invisible="0"/>
                 <field name="contrato_id" invisible="0"/>
                 <field name="fecha_alta" invisible="0"/>
+                <field name="requisitos_cumplidos" invisible="0"/>                
             </tree>
         </field>
     </record>

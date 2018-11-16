@@ -1,0 +1,29 @@
+<odoo>
+
+     <record id="view_partner_tree_inherit" model="ir.ui.view">
+         <!-- <field name="name">project.project.tree</field> -->
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.view_partner_tree"/>
+         <field name="type">tree</field>         
+         <field name="arch" type="xml">
+             <field name="display_name" position="after">
+                    <field name="tipo_recurso"/>
+              </field>
+         </field>
+     </record>
+
+     <record id="view_partner_form_inherit" model="ir.ui.view">
+         <!-- <field name="name">project.project.form</field> -->
+         <field name="model">res.partner</field>
+         <field name="inherit_id" ref="base.view_partner_form"/>
+         <field name="type">form</field>
+         <field name="arch" type="xml">
+             <field name="function" position="before">                 
+                    
+                <field name="tipo_recurso" attrs="{'invisible': [('is_company','=', True)], 'required': [('is_company','=', False)]}"/>
+                    
+             </field>
+         </field>
+     </record>
+
+</odoo>

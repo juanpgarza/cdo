@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','sale','hr'],
+    'depends': ['base','sale','hr','purchase'],
 
     # always loaded
     'data': [
@@ -30,6 +30,9 @@
         'views/cdo_alta_views.xml',
         'views/cdo_rh_views.xml',
         'views/hr_menu_views.xml',
+        'views/res_partner.xml',
+        'views/purchase.xml',
+        'reports/reports.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

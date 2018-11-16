@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+
+        <!-- 
+        ##################################################
+            Menu principal 
+        ##################################################
+        -->
+
+        <menuitem id="menu_purchase_cdo"
+            name="Control Documental"
+            parent="purchase.menu_purchase_root"
+            sequence="0"/>
+
+    <act_window id="action_view_purchase_alta"  
+            name="Altas Hr"
+            res_model="cdo.hr.alta" 
+            context="{'search_default_filter_requisitos_pendientes': True}"
+            domain="[('interno_externo','=', 2)]"
+            view_mode="tree,form"
+            target="current"/>
+
+    <menuitem id="menu_purchase_alta"
+        parent="menu_purchase_cdo"
+        action="action_view_purchase_alta"
+        sequence="4"/>
+
+      </data>
+</odoo>
+
+
+

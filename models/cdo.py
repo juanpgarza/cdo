@@ -39,6 +39,44 @@ class CdoRequisitoContrato(models.Model):
 
     adjunto_id = fields.Many2one('ir.attachment', string="Adjunto")
 
+    imagen1 = fields.Binary('Imagen1')
+
+    @api.onchange('imagen1')   
+    def imagen1_change(self):        
+        if self.imagen1:
+            self.requisito_cumplido = True
+        else:
+            self.requisito_cumplido = False
+                
+        return
+    
+    @api.multi
+    def write(self, vals):
+        super(CdoRequisitoContrato, self).write(vals)
+        
+        requisitos_cumplidos = True
+        for requisito in self.hr_alta_id.requisito_contrato_ids:
+            if not requisito.requisito_cumplido:
+                requisitos_cumplidos = False
+                break
+        
+        if requisitos_cumplidos:
+            self.hr_alta_id.requisitos_cumplidos = True
+
+            requisitos_hr_cumplidos = True
+            for hr_alta in self.hr_alta_id.alta_id.hr_alta_ids:
+                if not hr_alta.requisitos_cumplidos:
+                    requisitos_hr_cumplidos = False
+                    break
+            
+            if requisitos_hr_cumplidos:
+                self.hr_alta_id.alta_id.requisitos_cumplidos = True
+        else:
+            self.hr_alta_id.requisitos_cumplidos = False
+            self.hr_alta_id.alta_id.requisitos_cumplidos = False
+
+        return True
+
 class Adjunto(models.Model):
     _inherit = 'ir.attachment'
 

@@ -51,7 +51,7 @@
                             <field name="alta_ids">                    
                                 <tree string="Altas" create="1" update="0">
                                     <field name="fecha_alta"/>
-                                    <field name="requisitos_completos"/>
+                                    <field name="requisitos_cumplidos"/>
                                 </tree>
                             </field>
                         </page>
@@ -101,8 +101,9 @@
                             <field name="hr_alta_id" invisible="0" readonly="True"/>
                             <!-- <field name="hr_mensual_id" invisible="0" readonly="True"/> -->
                             <field name="requisito_id" invisible="0" readonly="True"/>
-                            <field name="requisito_cumplido" invisible="0" readonly="True"/>
+                            <field name="requisito_cumplido" invisible="1"/>
                             <!-- <field name="adjunto_id" string="Adjunto" widget="many2one_binary"/> -->
+                            <field name="imagen1" widget="image"/>
                         </group>
                     </group>
                 </sheet>

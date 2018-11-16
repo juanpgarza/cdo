@@ -13,7 +13,8 @@ class CdoAlta(models.Model):
 
     fecha_alta = fields.Date('Fecha alta')
 
-    requisitos_completos = fields.Boolean('Requisitos Completos')
+    # requisitos_completos = fields.Boolean('Requisitos Completos')
+    requisitos_cumplidos = fields.Boolean('Requisitos cumplidos?')
 
 class CdoHrAlta(models.Model):
     _inherit = ['mail.thread']

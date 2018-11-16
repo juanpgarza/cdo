@@ -10,7 +10,7 @@
     <menuitem id="menu_hr_cdo"
         name="Control Documental"
         parent="hr.menu_hr_root"
-        sequence="1"/>
+        sequence="0"/>
 
     <act_window id="action_hr_recursos"  
             name="Recursos Humanos"
